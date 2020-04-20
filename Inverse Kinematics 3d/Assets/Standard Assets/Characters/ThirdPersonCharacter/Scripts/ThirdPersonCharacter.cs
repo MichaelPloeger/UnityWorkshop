@@ -31,7 +31,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
 		[Header("Feet Grounder")]
-		private Vector3 rightFootPosition, leftFootPosition, leftFootIkPosition, rightFootIkPosition;
+		private Vector3 rightFootPosition, leftFootPosition, leftFootTargetPosition, rightFootTargetPosition;
 		private Quaternion leftFootIkRotation, rightFootIkRotation;
 		private float lastPelvisPositionY, lastRightFootPositionY, lastLeftFootPositionY;
 
@@ -40,7 +40,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[Range(0, 2)] [SerializeField] private float raycastDownDistance = 1.5f;
 		[SerializeField] private LayerMask environmentLayer;
 		[SerializeField] private float pelvisOffset = 0f;
-		[Range(0, 1)] [SerializeField] private float pelvisUpAnDownSpeed = 0.28f;
+		[Range(0, 1)] [SerializeField] private float pelvisUpAndDownSpeed = 0.28f;
 		[Range(0, 1)] [SerializeField] private float feetToIkPostionSpeed = 0.5f;
 
 		public string leftFootAnimVariableName = "LeftFootCurve";
@@ -251,8 +251,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			AdjustFeetTarget(ref rightFootPosition, HumanBodyBones.RightFoot);
 			AdjustFeetTarget(ref leftFootPosition, HumanBodyBones.LeftFoot);
 
-			FeetPositionSolver(rightFootPosition, ref rightFootIkPosition, ref rightFootIkRotation);
-			FeetPositionSolver(leftFootPosition, ref leftFootIkPosition, ref leftFootIkRotation);
+			FeetPositionSolver(rightFootPosition, ref rightFootTargetPosition, ref rightFootIkRotation);
+			FeetPositionSolver(leftFootPosition, ref leftFootTargetPosition, ref leftFootIkRotation);
 		}
 
 		private void OnAnimatorIK(int layerIndex)
@@ -266,10 +266,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			//Used for setting the feet correctly on any platform
 			if (useProIkFeature)
 			{
+				//For this to work the walk animation needs to be changed
 				m_Animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, m_Animator.GetFloat(rightFootAnimVariableName));
 			}
 
-			MoveFeetToIkPoint(AvatarIKGoal.RightFoot, rightFootIkPosition, rightFootIkRotation, ref lastRightFootPositionY);
+			MoveFeetToIkPoint(AvatarIKGoal.RightFoot, rightFootTargetPosition, rightFootIkRotation, ref lastRightFootPositionY);
 
 
 			m_Animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
@@ -278,25 +279,79 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, m_Animator.GetFloat(leftFootAnimVariableName));
 			}
 
-			MoveFeetToIkPoint(AvatarIKGoal.LeftFoot, leftFootIkPosition, leftFootIkRotation, ref lastLeftFootPositionY);
+			MoveFeetToIkPoint(AvatarIKGoal.LeftFoot, leftFootTargetPosition, leftFootIkRotation, ref lastLeftFootPositionY);
 		}
 
-		private void MoveFeetToIkPoint(AvatarIKGoal foot, Vector3 positionIkHolder, Quaternion rotationIkHolder, ref float lastFootPostionY) 
+
+		/// <summary>
+		/// Adjust the feet to the Ik point
+		/// </summary>
+		/// <param name="foot">current foot</param>
+		/// <param name="targetPositionHolder">holds the y needed for the foot</param>
+		/// <param name="rotationIkHolder">the rotation needed for the foor</param>
+		/// <param name="lastFootPostionY">the last position the foot was</param>
+		private void MoveFeetToIkPoint(AvatarIKGoal foot, Vector3 targetPositionHolder, Quaternion rotationIkHolder, ref float lastFootPostionY) 
 		{
+			Vector3 targetIkPosition = m_Animator.GetIKPosition(foot);
+
+			//check if targetPositionHolder is not equal to zero
+			//set targetPositionHolder and targetIkPostion to local space 
+			//add the targetPositionHolder.y to the targetIkPosition it has to be done in feetToIkPostionSpeed (mathf.Lerp)
+			//Set lastfootposition
+			//Set targetIkPostion to world space again and finally set the Ik rotation(rotationIkHolder) for the animator
+
+			m_Animator.SetIKPosition(foot, targetIkPosition);
 		}
 
+		/// <summary>
+		/// Adjust pelvis by the offset between the bodyposition and the highest foot
+		/// </summary>
 		private void MovePelvisHeight()
 		{
+			//These variables gonna be used for calculating the height and needs to be set in order to work
+			if (rightFootTargetPosition == Vector3.zero || leftFootTargetPosition == Vector3.zero || lastPelvisPositionY == 0)
+			{
+				lastPelvisPositionY = m_Animator.bodyPosition.y;
+				return;
+			}
+
+			//Calculate the offset of the footTargetPosition between the y position
 			
+
+			//Set new pelvisPosition using the offset and bodyposition from the animator. Set y position after in pelvisUpAnDownSpeed
+
+			//Set the body position to the new pelvisposition, set lastPelvisPositionY
+
 		}
 
-		private void FeetPositionSolver(Vector3 fromSkyposition, ref Vector3 feetIKposition, ref Quaternion feetIkRotations)
+		/// <summary>
+		/// ReAdjusts the feet to the correct place
+		/// </summary>
+		/// <param name="footPosition">Current position of the foot</param>
+		/// <param name="feetTargetPosition">current position of the feet target</param>
+		/// <param name="feetIkRotations">Current rotations of the feet</param>
+		private void FeetPositionSolver(Vector3 footPosition, ref Vector3 feetTargetPosition, ref Quaternion feetIkRotations)
 		{
+			//Visualisation for the ray;
+			if (showSolverDebug)
+				Debug.DrawLine(footPosition, footPosition + Vector3.down * (raycastDownDistance + heightFromGroundRaycast), Color.yellow);
+
+			//Check if footPosition hits the ground with distance raycastDownDistance + heightFromGroundRaycast
+			//if it does set feetIkPosition, override the y position to the correct hit, calculate foot rotation and set FeetIkRotations and return.
+
+			//If not worked
+			feetTargetPosition = Vector3.zero;
+
 		}
 
-		private void AdjustFeetTarget(ref Vector3 feetPositions, HumanBodyBones foot)
+		/// <summary>
+		///	Sets the position to the foot and adjusts the height with the heightFromGroundRaycast
+		/// </summary>
+		/// <param name="feetPosition">position of the feet that needs to be changed</param>
+		/// <param name="foot">foot bone</param>
+		private void AdjustFeetTarget(ref Vector3 feetPosition, HumanBodyBones foot)
 		{
-
+			//Get the foot position from the animator
 		}
 
 		#endregion
