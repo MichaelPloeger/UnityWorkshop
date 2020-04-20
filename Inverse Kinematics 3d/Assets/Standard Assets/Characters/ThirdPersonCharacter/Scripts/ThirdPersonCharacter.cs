@@ -263,6 +263,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			MovePelvisHeight();
 
 			m_Animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
+			//Used for setting the feet correctly on any platform
 			if (useProIkFeature)
 			{
 				m_Animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, m_Animator.GetFloat(rightFootAnimVariableName));
