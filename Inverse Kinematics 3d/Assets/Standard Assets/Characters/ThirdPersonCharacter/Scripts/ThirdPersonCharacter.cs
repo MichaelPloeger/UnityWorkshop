@@ -280,22 +280,67 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			MoveFeetToIkPoint(AvatarIKGoal.LeftFoot, leftFootIkPosition, leftFootIkRotation, ref lastLeftFootPositionY);
 		}
 
-		private void MoveFeetToIkPoint(AvatarIKGoal foot, Vector3 positionIkHolder, Quaternion rotationIkHolder, ref float lastFootPostionY) 
+		private void MoveFeetToIkPoint(AvatarIKGoal foot, Vector3 positionIkHolder, Quaternion rotationIkHolder, ref float lastFootPostionY)
 		{
+			Vector3 targetIkPosition = m_Animator.GetIKPosition(foot);
+
+			if (positionIkHolder != Vector3.zero)
+			{
+				targetIkPosition = transform.InverseTransformPoint(targetIkPosition);
+				positionIkHolder = transform.InverseTransformPoint(positionIkHolder);
+
+				float yPostion = Mathf.Lerp(lastFootPostionY, positionIkHolder.y, feetToIkPostionSpeed);
+				targetIkPosition.y += yPostion;
+
+				lastFootPostionY = yPostion;
+				targetIkPosition = transform.TransformPoint(targetIkPosition);
+				m_Animator.SetIKRotation(foot, rotationIkHolder);
+			}
+
+			m_Animator.SetIKPosition(foot, targetIkPosition);
 		}
 
 		private void MovePelvisHeight()
 		{
-			
+			if (rightFootIkPosition == Vector3.zero || leftFootIkPosition == Vector3.zero || lastPelvisPositionY == 0)
+			{
+				lastPelvisPositionY = m_Animator.bodyPosition.y;
+				return;
+			}
+
+			float lOffsetPosition = leftFootIkPosition.y - transform.position.y;
+			float rOffsetPosition = rightFootIkPosition.y - transform.position.y;
+
+			float totalOffset = (lOffsetPosition < rOffsetPosition) ? lOffsetPosition : rOffsetPosition;
+
+			Vector3 newPelvisPosition = m_Animator.bodyPosition + Vector3.up * totalOffset;
+			newPelvisPosition.y = Mathf.Lerp(lastPelvisPositionY, newPelvisPosition.y, pelvisUpAnDownSpeed);
+
+			m_Animator.bodyPosition = newPelvisPosition;
+			lastPelvisPositionY = m_Animator.bodyPosition.y;
 		}
 
 		private void FeetPositionSolver(Vector3 fromSkyposition, ref Vector3 feetIKposition, ref Quaternion feetIkRotations)
 		{
+			RaycastHit hit;
+			if (showSolverDebug)
+				Debug.DrawLine(fromSkyposition, fromSkyposition + Vector3.down * (raycastDownDistance + heightFromGroundRaycast), Color.yellow);
+
+			if (Physics.Raycast(fromSkyposition, Vector3.down, out hit, raycastDownDistance + heightFromGroundRaycast, environmentLayer))
+			{
+				feetIKposition = fromSkyposition;
+				feetIKposition.y = hit.point.y + pelvisOffset;
+				feetIkRotations = Quaternion.FromToRotation(Vector3.up, hit.normal) * transform.rotation;
+				return;
+			}
+
+			feetIKposition = Vector3.zero;
 		}
 
 		private void AdjustFeetTarget(ref Vector3 feetPositions, HumanBodyBones foot)
 		{
-
+			feetPositions = m_Animator.GetBoneTransform(foot).position;
+			feetPositions.y = transform.position.y + heightFromGroundRaycast;
 		}
 
 		#endregion
