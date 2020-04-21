@@ -10,10 +10,12 @@ public class Character2D : MonoBehaviour
 
     public GameObject left_leg;
     public GameObject left_leg_target;
+    public GameObject right_leg_target;
 
     public GameObject right_leg;
 
     public GameObject left_arm_target;
+    public GameObject right_arm_target;
 
     public LayerMask footLayers;
 
@@ -54,8 +56,8 @@ public class Character2D : MonoBehaviour
 
             gameObject.transform.position = new Vector3(transform.position.x,height + player_height,transform.position.z); //set the height of the character to a new vector3 from the lowest leg 
 
-            left_leg_target.transform.position = hitLeft.point; // set the target of the left leg to the ground hit from the raycast.
-            // --- IMPLEMENT RIGHT LEG --- \\
+            left_leg_target.transform.position = hitLeft.point; // set the target of the left leg to the ground hit position from the raycast.
+            right_leg_target.transform.position = hitRight.point; // set the target of the right leg to the ground hit position from the raycast.
         }
 
     }
@@ -66,7 +68,7 @@ public class Character2D : MonoBehaviour
     void UpdateArmPositions()
     {
         left_arm_target.transform.position = main_cam.ScreenToWorldPoint(Input.mousePosition);
-
+        right_arm_target.transform.position = main_cam.ScreenToWorldPoint(Input.mousePosition);
         //Implement Right Arm
     }
 
@@ -77,15 +79,11 @@ public class Character2D : MonoBehaviour
         
         RaycastHit2D hitLeft = Physics2D.Raycast(left_leg.transform.position, Vector2.down, 5,footLayers);
         RaycastHit2D hitRight = Physics2D.Raycast(right_leg.transform.position, Vector2.down, 5, footLayers);
-        if (hitLeft.collider != null && hitRight != null)
+        if (hitLeft.collider != null && hitRight.collider != null)
         {
             Gizmos.DrawLine(left_leg.transform.position, hitLeft.point);
             Gizmos.DrawLine(right_leg.transform.position, hitRight.point);
 
-        }
-        else
-        {
-            Gizmos.DrawRay(left_leg.transform.position, Vector2.down * (left_leg.transform.position.y - hitLeft.point.y));
         }
     }
 }
