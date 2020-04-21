@@ -83,9 +83,5 @@ public class Character2D : MonoBehaviour
             Gizmos.DrawLine(right_leg.transform.position, hitRight.point);
 
         }
-        else
-        {
-            Gizmos.DrawRay(left_leg.transform.position, Vector2.down * (left_leg.transform.position.y - hitLeft.point.y));
-        }
     }
 }

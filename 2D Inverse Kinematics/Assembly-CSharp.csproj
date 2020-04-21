@@ -68,29 +68,11 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Runtime">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.PixelPerfect.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.IK.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Path.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.IK.Runtime">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -98,23 +80,23 @@
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="PsdPlugin">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Editor">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
@@ -125,14 +107,26 @@
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.PixelPerfect">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
@@ -140,17 +134,14 @@
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Path.Editor">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>C:/Users/jkorn/Documents/GitHub/UnityWorkshop/2D Inverse Kinematics/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity Versions/2019.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
